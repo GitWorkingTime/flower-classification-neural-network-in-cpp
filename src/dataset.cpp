@@ -105,3 +105,22 @@ void trainTestSplit(
         testSet.push_back(copy[i]);
     }
 }
+
+std::vector<float> oneHotEncode(const std::string& label) {
+    std::vector<float> oneHotVector = {};
+    if (label == "Iris-setosa") {
+        oneHotVector.push_back(1.0f);
+        oneHotVector.push_back(0.0f);
+        oneHotVector.push_back(0.0f);
+    } else if (label == "Iris-versicolor") {
+        oneHotVector.push_back(0.0f);
+        oneHotVector.push_back(1.0f);
+        oneHotVector.push_back(0.0f);
+    } else if (label == "Iris-virginica") {
+        oneHotVector.push_back(0.0f);
+        oneHotVector.push_back(0.0f);
+        oneHotVector.push_back(1.0f);
+    }
+
+    return oneHotVector;
+}

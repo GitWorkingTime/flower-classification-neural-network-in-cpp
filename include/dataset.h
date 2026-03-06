@@ -22,4 +22,6 @@ void trainTestSplit(
     float testRatio = 0.2f
 );
 
+std::vector<float> oneHotEncode(const std::string& label);
+
 #endif
