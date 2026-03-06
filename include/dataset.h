@@ -15,4 +15,11 @@ struct IrisSample {
 std::vector<IrisSample> loadCSVFile(const std::string& filePath);
 std::vector<IrisSample> minMaxNormalize(const std::vector<IrisSample>& dataset);
 
+void trainTestSplit(
+    const std::vector<IrisSample>& dataset,
+    std::vector<IrisSample>& trainSet,
+    std::vector<IrisSample>& testSet,
+    float testRatio = 0.2f
+);
+
 #endif

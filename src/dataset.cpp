@@ -1,5 +1,7 @@
 // Imports
 #include "../include/dataset.h"
+#include <algorithm>
+#include <random>
 
 std::vector<IrisSample> loadCSVFile(const std::string& filePath) {
     std::vector<IrisSample> dataset;
@@ -28,6 +30,9 @@ std::vector<IrisSample> loadCSVFile(const std::string& filePath) {
         std::stringstream ss(line);
         std::string token = "";
         IrisSample sample;
+
+        // Skip the ID column
+        std::getline(ss, token, ',');
 
         // Read the 4 features
         for (std::size_t i = 0; i < 4; ++i) {
@@ -77,4 +82,26 @@ std::vector<IrisSample> minMaxNormalize(const std::vector<IrisSample>& dataset) 
     }
 
     return normalized;
+}
+
+void trainTestSplit(
+    const std::vector<IrisSample>& dataset,
+    std::vector<IrisSample>& trainSet,
+    std::vector<IrisSample>& testSet,
+    float testRatio
+) {
+    std::vector<IrisSample> copy = dataset;
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    
+    std::shuffle(copy.begin(), copy.end(), rng);
+    std::size_t splitIndex = copy.size() * (1.0f - testRatio);
+
+    for (std::size_t i = 0; i < splitIndex; ++i ) {
+        trainSet.push_back(copy[i]);
+    }
+
+    for (std::size_t i = splitIndex; i < copy.size(); ++i ) {
+        testSet.push_back(copy[i]);
+    }
 }

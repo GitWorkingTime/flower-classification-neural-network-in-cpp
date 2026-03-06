@@ -13,6 +13,7 @@ target_include_directories(iris_nn PRIVATE include)
 # test executable
 add_executable(run_tests
     tests/test_normalization.cpp
+    tests/test_train_test_split.cpp
     src/dataset.cpp
 )
 target_include_directories(run_tests PRIVATE include tests)
