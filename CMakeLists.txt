@@ -3,18 +3,24 @@ project(iris_nn)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# main executable
 add_executable(iris_nn
     src/main.cpp
     src/dataset.cpp
+    src/utils.cpp
 )
 target_include_directories(iris_nn PRIVATE include)
 
-# test executable
 add_executable(run_tests
-    tests/test_normalization.cpp
-    tests/test_train_test_split.cpp
-    tests/test_one_hot_encode.cpp
+    tests/dataset/test_normalization.cpp
+    tests/dataset/test_train_test_split.cpp
+    tests/dataset/test_one_hot_encode.cpp
+    tests/utils/test_dot.cpp
+    tests/utils/test_mat_vec_mul.cpp
+    tests/utils/test_vec_add.cpp
+    tests/utils/test_vec_mul.cpp
+    tests/utils/test_transpose.cpp
+    tests/utils/test_scalar_mul.cpp
     src/dataset.cpp
+    src/utils.cpp
 )
 target_include_directories(run_tests PRIVATE include tests)
