@@ -51,10 +51,30 @@ std::vector<IrisSample> loadCSVFile(const std::string& filePath) {
     return dataset;
 }
 
-float minMaxNormalization(const float value, const float min, const float max) {
-    float numerator = value - min;
-    float denominator = max - min;
-    float result = numerator/denominator;
+std::vector<IrisSample> minMaxNormalize(const std::vector<IrisSample>& dataset) {
+    std::vector<IrisSample> normalized = dataset;
+    for (std::size_t feat = 0; feat < 4; ++feat ) {
+        float min = dataset[0].features[feat];
+        float max = dataset[0].features[feat];
 
-    return result;
+        for (const IrisSample& sample : normalized) {
+            if (sample.features[feat] < min) {
+                min = sample.features[feat];
+            }
+
+            if (sample.features[feat] > max ) {
+                max = sample.features[feat];
+            }
+        }
+
+        for (IrisSample& sample : normalized) {
+            if (min == max) {
+                sample.features[feat] = 0.0f;
+                continue;
+            }
+            sample.features[feat] = (sample.features[feat] - min) / (max - min);
+        }
+    }
+
+    return normalized;
 }
