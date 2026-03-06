@@ -20,7 +20,10 @@ add_executable(run_tests
     tests/utils/test_vec_mul.cpp
     tests/utils/test_transpose.cpp
     tests/utils/test_scalar_mul.cpp
+    tests/activations/test_relu.cpp
+    tests/activations/test_softmax.cpp
     src/dataset.cpp
     src/utils.cpp
+    src/activations.cpp
 )
 target_include_directories(run_tests PRIVATE include tests)

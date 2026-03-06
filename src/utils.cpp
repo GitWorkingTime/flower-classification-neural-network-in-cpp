@@ -1,4 +1,4 @@
-#include "../include/utils.h"
+#include "utils.h"
 
 // dot product of two vectors
 float dot(const std::vector<float>& a, const std::vector<float>& b) {
