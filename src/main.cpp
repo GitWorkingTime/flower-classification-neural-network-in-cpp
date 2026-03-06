@@ -18,5 +18,12 @@ int main() {
     }
     std::cout << "\nLabel: " << dataset[0].label << std::endl;
 
+    // [min, max]
+    float sepalLengthCm[2] = {0, 0};
+    float sepalWidthCm[2] = {0, 0};
+    float petalLengthCm[2] = {0, 0};
+    float petalWidthCm[2] = {0, 0};
+
+
     return 0;
 }

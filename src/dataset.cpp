@@ -50,3 +50,11 @@ std::vector<IrisSample> loadCSVFile(const std::string& filePath) {
     file.close();
     return dataset;
 }
+
+float minMaxNormalization(const float value, const float min, const float max) {
+    float numerator = value - min;
+    float denominator = max - min;
+    float result = numerator/denominator;
+
+    return result;
+}

@@ -14,4 +14,6 @@ struct IrisSample {
 
 std::vector<IrisSample> loadCSVFile(const std::string& filePath);
 
+float minMaxNormalization(const float value, const float min, const float max);
+
 #endif
